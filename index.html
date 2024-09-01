@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>字數統計工具</title>
+    <title>總字符統計工具</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -23,33 +23,16 @@
     </style>
 </head>
 <body>
-    <h1>字數統計工具</h1>
+    <h1>總字符統計工具</h1>
     <textarea id="textInput" placeholder="在此輸入文字..."></textarea>
     <div class="results">
-        <p>字數：<span id="wordCount">0</span></p>
-        <p>標點符號數量：<span id="punctuationCount">0</span></p>
         <p>總字符數量：<span id="charCount">0</span></p>
     </div>
 
     <script>
-        function countWords(text) {
-            return text.trim().split(/\s+/).filter(word => word.length > 0).length;
-        }
-
-        function countPunctuation(text) {
-            const punctuation = text.match(/[，。！？、；：『』「」（）《》〈〉]/g);
-            return punctuation ? punctuation.length : 0;
-        }
-
-        function countCharacters(text) {
-            return text.length;
-        }
-
         document.getElementById('textInput').addEventListener('input', function () {
             const text = this.value;
-            document.getElementById('wordCount').innerText = countWords(text);
-            document.getElementById('punctuationCount').innerText = countPunctuation(text);
-            document.getElementById('charCount').innerText = countCharacters(text);
+            document.getElementById('charCount').innerText = text.length;
         });
     </script>
 </body>
